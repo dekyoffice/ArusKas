@@ -1,0 +1,122 @@
+================================================================================
+   PANDUAN PENGGUNAAN & INSTALASI APLIKASI MONITORING & REKAPITULASI ANGGARAN
+================================================================================
+
+Aplikasi Sistem Informasi Monitoring dan Rekapitulasi Realisasi Anggaran 
+(DPA, Belanja Konsumsi Makan & Minum, dan Perjalanan Dinas) berbasis Web.
+
+Paket berkas ini telah disiapkan secara bersih (Production Ready) dan siap 
+digunakan langsung oleh klien/instansi tanpa perlu kompilasi ulang kode.
+
+--------------------------------------------------------------------------------
+1. PERSYARATAN SISTEM (SYSTEM REQUIREMENTS)
+--------------------------------------------------------------------------------
+- Sistem Operasi: Windows 10 / 11 / Windows Server (atau Linux / macOS)
+- Web Browser: Google Chrome, Microsoft Edge, Mozilla Firefox (versi modern)
+- PHP: Versi 8.2 atau lebih baru
+  Ekstensi PHP yang wajib aktif di php.ini:
+  - pdo_sqlite
+  - sqlite3
+  - mbstring
+  - openssl
+  - fileinfo
+  - curl
+  (Jika menggunakan XAMPP 8.2+, seluruh ekstensi di atas sudah aktif secara default)
+
+--------------------------------------------------------------------------------
+2. CARA MENJALANKAN APLIKASI 
+--------------------------------------------------------------------------------
+Cukup klik dua kali (Double-Click) file:
+   ==> JALANKAN_APLIKASI.bat
+
+Sistem akan otomatis:
+1. Memeriksa ketersediaan PHP di komputer.
+2. Membersihkan cache sistem.
+3. Menjalankan server aplikasi lokal.
+4. Otomatis membuka aplikasi di browser pada alamat:
+   http://127.0.0.1:8000
+
+Catatan:
+- Jangan menutup jendela Command Prompt hitam selama Anda menggunakan aplikasi.
+- Untuk menghentikan aplikasi, tekan kombinasi tombol [CTRL + C] pada jendela tersebut.
+- Jika tab browser tidak sengaja tertutup, Anda cukup membuka kembali file BUKA_BROWSER.bat.
+
+--------------------------------------------------------------------------------
+3. INFORMASI AKUN PENGGUNA BAWAAN (DEFAULT USERS)
+--------------------------------------------------------------------------------
+Sistem memiliki 3 tingkat hak akses (*role*):
+
+A. AKUN ADMINISTRATOR (Hak Akses Penuh & Manajemen Pengguna)
+   - Username : admin
+   - Password : password
+   - Fungsi   : Dapat mengelola akun staf/pengguna, mengelola sub kegiatan,
+                input transaksi, dan mengakses seluruh menu.
+
+B. AKUN STAFF / OPERATOR (Input & Pengelolaan Data)
+   - Username : staff
+   - Password : staff123
+   - Fungsi   : Menginput transaksi makan & minum, perjalanan dinas, upload
+                surat undangan & foto dokumentasi, serta mengunduh rekap.
+
+C. AKUN VIEWER / PIMPINAN (Hanya Baca / Read-Only)
+   - Username : viewer
+   - Password : viewer123
+   - Fungsi   : Memantau ringkasan anggaran, melihat lembar kerja rekapitulasi,
+                dan mengunduh laporan tanpa tombol tambah/edit/hapus data.
+
+*Tips Keamanan: Segera ubah password akun di atas melalui menu Pengaturan Profil 
+setelah pertama kali masuk demi keamanan data instansi Anda.
+
+--------------------------------------------------------------------------------
+4. FITUR-FITUR UTAMA APLIKASI
+--------------------------------------------------------------------------------
+1. Dashboard Ringkasan Pagu & Realisasi:
+   - Menampilkan total pagu anggaran (Murni & Perubahan) dan sisa saldo.
+   - Grafik penyerapan anggaran per sub kegiatan.
+   - Pemilih tahun anggaran (Tahun 2025, 2026, 2027 dinamis).
+
+2. Transaksi Makan & Minum (Konsumsi Rapat):
+   - Perhitungan otomatis harga paket konsumsi (Snack Rp15.400, Nasi Rp46.300).
+   - Perhitungan otomatis pajak (PPN & PPh).
+   - Validasi sisa pagu otomatis (mencegah belanja melebihi sisa anggaran).
+   - Upload file surat undangan dan banyak foto dokumentasi kegiatan (multi-upload).
+
+3. Lembar Kerja Rekapitulasi Format Excel Interaktif:
+   - Tabel 9 kolom dengan fitur Fixed Sticky Header.
+   - Penggabungan (*merge/rowspan*) nama sub kegiatan agar rapi.
+   - Filter tanggal kalender spesifik & pencarian nama rapat.
+   - Tombol "Export Excel" (.csv) berbasis Blob instan tanpa lag.
+   - Tampilan responsif di layar komputer maupun smartphone.
+
+4. Transaksi Perjalanan Dinas:
+   - Pencatatan tujuan/wilayah, rincian personil yang berangkat, dan bukti SPT/SPPD.
+
+5. Monitoring Rapat:
+   - Pemantauan ketercapaian target rapat biasa dan rapat besar per sub kegiatan.
+
+--------------------------------------------------------------------------------
+5. CARA BACKUP DATA (PENCADANGAN BASIS DATA)
+--------------------------------------------------------------------------------
+Seluruh data aplikasi tersimpan rapi dalam 1 berkas basis data SQLite.
+Untuk mencadangkan (backup) seluruh data instansi:
+1. Masuk ke folder: database\
+2. Salin (copy) berkas bernama: database.sqlite
+3. Simpan berkas tersebut ke Flashdisk, Google Drive, atau harddisk eksternal.
+
+Jika suatu saat ingin merestore data:
+Cukup gantikan kembali berkas database.sqlite tersebut ke dalam folder database\.
+
+--------------------------------------------------------------------------------
+6. AKSES DARI KOMPUTER LAIN DI JARINGAN KANTOR (LAN / WI-FI)
+--------------------------------------------------------------------------------
+Jika ingin aplikasi diakses oleh beberapa komputer sekaligus di kantor:
+1. Buka Command Prompt di folder aplikasi.
+2. Jalankan perintah:
+   php artisan serve --host=0.0.0.0 --port=8000
+3. Komputer lain di jaringan Wi-Fi/LAN yang sama dapat mengakses dengan mengetikkan:
+   http://[IP-KOMPUTER-SERVER]:8000
+   (Contoh: http://192.168.1.15:8000)
+
+================================================================================
+Aplikasi siap diserahterimakan dan digunakan untuk operasional instansi!
+================================================================================

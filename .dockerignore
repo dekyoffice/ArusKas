@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+npm-debug.log
+yarn-error.log
+.vscode
+.idea
+Dockerfile*
+docker-compose*
+.env.example
+tests
+database/database.sqlite.bak_testing

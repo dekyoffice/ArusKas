@@ -1,0 +1,58 @@
+================================================================================
+          PANDUAN SERAH TERIMA APLIKASI MONITORING ARUS KAS KEPADA TIM IT
+================================================================================
+
+Aplikasi: Sistem Informasi Monitoring Realisasi Anggaran (DPA, Perjalanan Dinas, Makan Minum)
+Stack   : Laravel 11 (PHP 8.2), React 18, Inertia.js, Tailwind CSS, SQLite / MySQL Ready.
+
+Aplikasi ini telah disiapkan dalam 2 METODE DEPLOYMENT agar tim IT dapat langsung mengoperasikannya sesuai standar server instansi.
+
+--------------------------------------------------------------------------------
+METODE 1: MENGGUNAKAN DOCKER 
+--------------------------------------------------------------------------------
+Konfigurasi Docker sudah disediakan lengkap (Dockerfile, docker-compose.yml, Nginx + PHP 8.2 Alpine).
+
+Langkah menjalankan:
+1. Buka terminal di root folder aplikasi:
+   cd ArusKas
+
+2. Jalankan perintah:
+   docker compose up -d --build
+
+3. Selesai! Aplikasi langsung running di port 8000:
+   http://localhost:8000 (atau http://ip-server:8000)
+
+Catatan untuk Tim IT:
+- Volume database (database/database.sqlite) dan storage (storage/app/public) telah dipetakan ke host, sehingga data dan file upload tetap aman dan persisten meski container di-restart/rebuild.
+- Port dapat disesuaikan pada baris `ports: - "8000:80"` di file docker-compose.yml.
+
+--------------------------------------------------------------------------------
+METODE 2: MENJALANKAN LANGSUNG TANPA DOCKER (Local Host / Laptop)
+--------------------------------------------------------------------------------
+Jika dijalankan di komputer/laptop lokal tanpa Docker:
+1. Cukup klik ganda file:
+   JALANKAN_APLIKASI.bat
+2. Aplikasi akan otomatis mendeteksi IP lokal dan menjalankan server di:
+   http://127.0.0.1:8000
+
+--------------------------------------------------------------------------------
+INFORMASI AKUN LOGIN SISTEM (DEFAULT)
+--------------------------------------------------------------------------------
+1. Peran Administrator (Akses Penuh):
+   - Username : admin
+   - Password : password
+
+2. Peran Staff / Operator (Input Transaksi):
+   - Username : staff
+   - Password : staff123
+
+3. Peran Pimpinan / Viewer (Hanya Melihat & Ekspor Laporan):
+   - Username : viewer
+   - Password : viewer123
+
+--------------------------------------------------------------------------------
+CATATAN TEKNIS DOCKER:
+--------------------------------------------------------------------------------
+- Asset Frontend (Vite) sudah di-compile bersih ke folder `public/build`.
+- Jika ingin menghubungkan ke database MySQL server dinas, cukup ubah konfigurasi DB_CONNECTION di file .env menjadi `mysql` dan isi DB_HOST, DB_DATABASE, DB_USERNAME, dan DB_PASSWORD.
+================================================================================
