@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                         <div className="bg-white p-1 rounded-lg shadow-sm">
                             <img src="/images/akcaya-logo.png" alt="Logo Akcaya" className="w-9 h-9 object-contain" />
                         </div>
-                        <span className="text-lg font-bold tracking-tight text-white">Arus Kas</span>
+                        <span className="text-lg font-bold tracking-tight text-white">ArusKas</span>
                     </div>
                     {/* Tombol tutup sidebar di mobile */}
                     <button

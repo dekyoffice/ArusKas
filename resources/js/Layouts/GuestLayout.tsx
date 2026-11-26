@@ -10,7 +10,7 @@ export default function Guest({ children }: PropsWithChildren) {
                     <ApplicationLogo className="h-24 w-auto drop-shadow-sm" />
                 </Link>
                 <h2 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-slate-800">
-                    Arus Kas
+                    ArusKas
                 </h2>
             </div>
 
